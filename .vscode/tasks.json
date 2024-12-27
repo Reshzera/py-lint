@@ -5,19 +5,18 @@
       "label": "Watch Linter",
       "type": "shell",
       "command": "/usr/bin/python3",
-      "args": [
-        "${workspaceFolder}/watcher.py",
-        "${workspaceFolder}"
-      ],
+      "args": ["${workspaceFolder}/watcher.py", "${workspaceFolder}"],
       "isBackground": true,
       "problemMatcher": {
         "owner": "py-linter",
         "fileLocation": "absolute",
         "pattern": {
-          "regexp": "^([^:]+):(\\d+): (.*)$",
+          "regexp": "^([^:]+):(\\d+):(\\d+)-(\\d+): (.*)$",
           "file": 1,
           "line": 2,
-          "message": 3
+          "column": 3,
+          "endColumn": 4,
+          "message": 5
         },
         "background": {
           "activeOnStart": true,

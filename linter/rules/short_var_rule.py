@@ -11,8 +11,10 @@ class ShortVarRule(BaseRule):
             if isinstance(node, ast.Name):
                 if len(node.id) == 1 and node.id.isalpha():
                     problem.append({
-                        "filename": filename,
-                        "lineno": getattr(node, 'lineno', 0),
-                        "message": f"Nome de variável muito curto: '{node.id}'"
+                       "filename": filename,
+                        "lineno": node.lineno,
+                        "col_offset": node.col_offset + 1,
+                        "end_col_offset": node.end_col_offset + 1,
+                        "message": f"Too short variable name: '{node.id}'"
                     })
         return problem

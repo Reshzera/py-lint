@@ -13,6 +13,8 @@ class PrintRule(BaseRule):
                     problem.append({
                         "filename": filename,
                         "lineno": node.lineno,
-                        "message": "Uso de print() encontrado."
+                        "col_offset": node.col_offset + 1,
+                        "end_col_offset": node.end_col_offset + 1,
+                        "message": "Usage of print() found."
                     })
         return problem

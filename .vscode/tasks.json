@@ -1,0 +1,20 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run Linter",
+      "type": "shell",
+      "command": "python3",
+      "args": ["${workspaceFolder}/cli.py", "${file}"],
+      "problemMatcher": {
+        "fileLocation": "absolute",
+        "pattern": {
+          "regexp": "^([^:]+):(\\d+): (.*)$",
+          "file": 1,
+          "line": 2,
+          "message": 3
+        }
+      }
+    }
+  ]
+}

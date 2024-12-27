@@ -2,17 +2,27 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Run Linter",
+      "label": "Watch Linter",
       "type": "shell",
-      "command": "python3",
-      "args": ["${workspaceFolder}/cli.py", "${file}"],
+      "command": "/usr/bin/python3",
+      "args": [
+        "${workspaceFolder}/watcher.py",
+        "${workspaceFolder}"
+      ],
+      "isBackground": true,
       "problemMatcher": {
+        "owner": "py-linter",
         "fileLocation": "absolute",
         "pattern": {
           "regexp": "^([^:]+):(\\d+): (.*)$",
           "file": 1,
           "line": 2,
           "message": 3
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^PY_LINT: START_LINT$",
+          "endsPattern": "^PY_LINT: END_LINT$"
         }
       }
     }

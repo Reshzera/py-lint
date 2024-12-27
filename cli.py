@@ -3,6 +3,7 @@ import sys
 from linter.runner import check_file
 
 def main():
+    print("PY_LINT: START_LINT")
     if len(sys.argv) < 2:
         print("Uso: python cli.py [arquivos.py]")
         sys.exit(1)
@@ -14,6 +15,7 @@ def main():
         else:
             for p in problems:
                 print(f"{p['filename']}:{p['lineno']}: {p['message']}")
+    print("PY_LINT: END_LINT")
 
 if __name__ == "__main__":
     main()

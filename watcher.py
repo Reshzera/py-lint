@@ -4,14 +4,13 @@ import subprocess
 import time
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
-import os
 
 class Watcher(FileSystemEventHandler):
     def on_modified(self, event):
         if event.is_directory:
             return
-        if event.src_path.endswith(".py"):
-            subprocess.run(["python3", "cli.py", event.src_path])
+        if event.src_path.endswith(".js"):
+            subprocess.run(["/usr/bin/python3", "cli.py", event.src_path])
 
 if __name__ == "__main__":
     path = sys.argv[1] if len(sys.argv) > 1 else "."

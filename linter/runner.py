@@ -1,19 +1,18 @@
-import ast
+import esprima 
 from typing import List
-from linter.rules import PrintRule, ShortVarRule
-
+from linter.rules import PrintRule, RedeclareWithoutLetRule
 
 def get_all_rules():
     return [
         PrintRule(),
-        ShortVarRule()
+        RedeclareWithoutLetRule(),
     ]
 
 def check_file(filename: str) -> List[dict]:
     with open(filename, "r", encoding="utf-8") as f:
         source = f.read()
 
-    tree = ast.parse(source, filename=filename)
+    tree = esprima.parseScript(source, loc=True)
 
     rules = get_all_rules()
 

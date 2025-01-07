@@ -1,9 +1,9 @@
 # linter/rules/__init__.py
 
 from .print_rule import PrintRule
-from .short_var_rule import ShortVarRule
+from .redeclare_without_let_rule import RedeclareWithoutLetRule
 
 __all__ = [
     "PrintRule",
-    "ShortVarRule",
+    "RedeclareWithoutLetRule",
 ]
